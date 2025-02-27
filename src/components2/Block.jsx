@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const Blocks = ({ users }) => {
+const Blocks = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/users")
+      .then((response) => setUsers(response.data))
+      .catch((error) => console.error("Xatolik:", error));
+  }, []);
+
   return (
     <div className="grid grid-cols-3 gap-4 max-w-screen-lg mx-auto mt-8">
       {users.map((user, index) => (
