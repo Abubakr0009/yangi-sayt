@@ -1,3 +1,5 @@
+// CRUD
+
 // import React, {useState} from "react";
 // import { Navigate , BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import BookList from "./components3/Booklist";
@@ -42,33 +44,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// SAYT KO`K
 
 // import React, { useState, useEffect } from "react";
 // import "./App.css";
@@ -104,29 +80,50 @@
 // export default App;
 
 
-import React from "react";
-import { ThemeProvider } from "./context/ThemeContext";
-import { LanguageProvider } from "./context/LanguageContext";
-// import Header from "./components/Header";
-// import Main from "./components/Main";
-import Header_main from "./components2/Header_main";
+
+// DARK MODE
+
+// import React from "react";
+// import { ThemeProvider } from "./context/ThemeContext";
+// import { LanguageProvider } from "./context/LanguageContext";
+// // import Header from "./components/Header";
+// // import Main from "./components/Main";
+// import Header_main from "./components2/Header_main";
+// // import Header from "./components2/Header_nav";
+// import Blocks from "./components2/Block";
 // import Header from "./components2/Header_nav";
-import Blocks from "./components2/Block";
-import Header from "./components2/Header_nav";
 
 
 
 
-function App() {
+// function App() {
+//   return (
+//     <ThemeProvider>
+//       <LanguageProvider>
+//         <Header/>
+//         <Header_main/>
+//        <Blocks/>
+//       </LanguageProvider>
+//     </ThemeProvider>
+//   );
+// }
+
+// export default App;
+
+
+import React from "react";
+import useGetData from "./hooks/useGetData";
+import Users from "./components/Users";
+
+const App = () => {
+  const { data: users, loading, error } = useGetData("/users");
+
   return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <Header/>
-        <Header_main/>
-       <Blocks/>
-      </LanguageProvider>
-    </ThemeProvider>
+    <div>
+      <h1>App Component</h1>
+      <Users users={users} loading={loading} error={error} />
+    </div>
   );
-}
+};
 
 export default App;
