@@ -1,21 +1,31 @@
-// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import React, {useState} from "react";
+// import { Navigate , BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import BookList from "./components3/Booklist";
 // import AddBook from "./components3/Addbook";
 // import EditBook from "./components3/EditBook";
 
 
 
+
+
 // const App = () => {
+//   console.log("App ishladi");
+
+//   const isAuthenticated = () => {
+//     return localStorage.getItem("token") !== null; // 🔐 Token mavjudligini tekshiradi
+//   };
+
+//   const ProtectedRoute = ({ children }) => {
+//     return isAuthenticated() ? children : <Navigate to="/" />;
+//   };
+  
 //   return (
 //     <Router>
 //       <div>
 //         <h1 style={{ textAlign: "center" }}>📚 Kitoblar CRUD App</h1>
 //         <Routes>
-//           {/* <Route path="/" element={<BookList />} />
-//           <Route path="/add" element={<AddBook />} />
-//           <Route path="/edit/:id" element={<EditBook />} /> */}
 //           <Route path="/" element={<BookList/>}/>
-//           <Route path="/add" element={<AddBook/>}/>
+//           <Route path="/add" element={<ProtectedRoute><AddBook/></ProtectedRoute>}/>
 //           <Route path="/edit/:id" element={<EditBook/>}/>
 //         </Routes>
 //       </div>
@@ -97,12 +107,14 @@
 import React from "react";
 import { ThemeProvider } from "./context/ThemeContext";
 import { LanguageProvider } from "./context/LanguageContext";
-
 // import Header from "./components/Header";
 // import Main from "./components/Main";
 import Header_main from "./components2/Header_main";
-import Header from "./components2/Header_nav";
+// import Header from "./components2/Header_nav";
 import Blocks from "./components2/Block";
+import Header from "./components2/Header_nav";
+
+
 
 
 function App() {
@@ -112,7 +124,6 @@ function App() {
         <Header/>
         <Header_main/>
        <Blocks/>
-        {/* <Main /> */}
       </LanguageProvider>
     </ThemeProvider>
   );

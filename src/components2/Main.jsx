@@ -2,7 +2,8 @@ import React from 'react'
 // import {Frame} from "./Frame46.png"
 const Main = () => {
   return (
-    <div>
+    
+    <div >
         <main className='bg-blue-700 '>
             <div className="main_hero max-w-screen-xl  items-center  mx-auto">
                 <h4 className='text-white font-bold text-[30px] py-[100px]'>Quis et quam quam sem <br /> scelerisque odio. Diam hendrerit <br /> purus dui nisl scelerisque in <br />  pharetra molestie. Nunc leo.</h4>
