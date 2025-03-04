@@ -6,10 +6,6 @@
 // import AddBook from "./components3/Addbook";
 // import EditBook from "./components3/EditBook";
 
-
-
-
-
 // const App = () => {
 //   console.log("App ishladi");
 
@@ -20,7 +16,7 @@
 //   const ProtectedRoute = ({ children }) => {
 //     return isAuthenticated() ? children : <Navigate to="/" />;
 //   };
-  
+
 //   return (
 //     <Router>
 //       <div>
@@ -37,13 +33,6 @@
 
 // export default App;
 
-
-
-
-
-
-
-
 // SAYT KO`K
 
 // import React, { useState, useEffect } from "react";
@@ -53,8 +42,7 @@
 // import Section from "./components2/Section";
 // import Footer from "./components2/Footer";
 // import Main from "./components2/Main";
-// import Block from "./components2/Block"; 
-
+// import Block from "./components2/Block";
 
 // function App() {
 //   const [users, setUsers] = useState([]);
@@ -79,8 +67,6 @@
 
 // export default App;
 
-
-
 // DARK MODE
 
 // import React from "react";
@@ -92,9 +78,6 @@
 // // import Header from "./components2/Header_nav";
 // import Blocks from "./components2/Block";
 // import Header from "./components2/Header_nav";
-
-
-
 
 // function App() {
 //   return (
@@ -110,20 +93,68 @@
 
 // export default App;
 
+// import React from "react";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import Header from "./tailbblock/Header";
+// import Section from "./tailbblock/Section";
+// import Main from "./tailbblock/Main";
+// import Malumot from "./tailbblock/Malumot";
+// import Steps from "./tailbblock/Steps";
+// import Footer from "./tailbblock/Footer";
+// // import Signup from "./tailbblock/Signup";
+// // import { Button } from "antd";
 
-import React from "react";
-import useGetData from "./hooks/useGetData";
-import Users from "./components/Users";
+// const App = () => {
+//   return (
+//     <div>
+//       {/* <Button type="primary">Primary Button</Button>
+//       <Button>Default Button</Button>
+//       <Button type="dashed">Dashed Button</Button>
+//       <Button type="text">Text Button</Button>
+//       <Button type="link">Link Button</Button> */}
+//       <Header />
+//       <Section/>
+//       <Main/>
+//       <Malumot/>
+//       <Steps/>
+//       <Footer/>
+//       <Router>
+//       <Routes>
+//         <Route path="/" element={<Header />} />
+//         {/* <Route path="/signup"  element={<Signup/>} /> */}
+//       </Routes>
+//     </Router>
+//     </div>
+//   );
+// };
 
-const App = () => {
-  const { data: users, loading, error } = useGetData("/users");
+// export default App;
 
+
+
+
+import { Routes, Route } from 'react-router-dom';
+import Header from './components4/Header';
+import Home from './pages/Home';
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
+import Add from './pages/Add';
+import Edit from './pages/Edit';
+import ProtectedRoute from './components4/ProtectedRoute';
+
+function App() {
   return (
-    <div>
-      <h1>App Component</h1>
-      <Users users={users} loading={loading} error={error} />
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/add" element={<ProtectedRoute><Add /></ProtectedRoute>} />
+        <Route path="/edit" element={<ProtectedRoute><Edit /></ProtectedRoute>} />
+      </Routes>
+    </>
   );
-};
+}
 
 export default App;
