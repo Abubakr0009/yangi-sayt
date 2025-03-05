@@ -1,5 +1,4 @@
 // CRUD
-
 // import React, {useState} from "react";
 // import { Navigate , BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import BookList from "./components3/Booklist";
@@ -68,7 +67,6 @@
 // export default App;
 
 // DARK MODE
-
 // import React from "react";
 // import { ThemeProvider } from "./context/ThemeContext";
 // import { LanguageProvider } from "./context/LanguageContext";
@@ -93,14 +91,36 @@
 
 // export default App;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import React from "react";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// // import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
 // import Header from "./tailbblock/Header";
 // import Section from "./tailbblock/Section";
 // import Main from "./tailbblock/Main";
 // import Malumot from "./tailbblock/Malumot";
 // import Steps from "./tailbblock/Steps";
 // import Footer from "./tailbblock/Footer";
+// import Signup from "./tailbblock/Signup";
 // // import Signup from "./tailbblock/Signup";
 // // import { Button } from "antd";
 
@@ -112,23 +132,97 @@
 //       <Button type="dashed">Dashed Button</Button>
 //       <Button type="text">Text Button</Button>
 //       <Button type="link">Link Button</Button> */}
+
+
+//       <Signup/>
 //       <Header />
 //       <Section/>
 //       <Main/>
 //       <Malumot/>
 //       <Steps/>
 //       <Footer/>
-//       <Router>
+
+
+
+//       {/* <Router>
 //       <Routes>
 //         <Route path="/" element={<Header />} />
-//         {/* <Route path="/signup"  element={<Signup/>} /> */}
+//         <Route path="/signup"  element={<Signup/>} />
 //       </Routes>
-//     </Router>
+//     </Router> */}
 //     </div>
 //   );
 // };
 
 // export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
