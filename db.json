@@ -1,8 +1,4 @@
 {
-  "id": 1,
-  "name": "React",
-  "surname": "Abdunazarov",
-  "age": "Abubakr",
-  "ball": "Abubakr",
-  "data": "Abubakr"
+  "email": "test@example.com",
+  "password": "123456"
 }

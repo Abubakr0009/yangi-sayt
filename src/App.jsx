@@ -91,29 +91,8 @@
 
 // export default App;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import React from "react";
-// // import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
+// // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import Header from "./tailbblock/Header";
 // import Section from "./tailbblock/Section";
 // import Main from "./tailbblock/Main";
@@ -121,6 +100,8 @@
 // import Steps from "./tailbblock/Steps";
 // import Footer from "./tailbblock/Footer";
 // import Signup from "./tailbblock/Signup";
+// import './index.css';
+
 // // import Signup from "./tailbblock/Signup";
 // // import { Button } from "antd";
 
@@ -133,7 +114,6 @@
 //       <Button type="text">Text Button</Button>
 //       <Button type="link">Link Button</Button> */}
 
-
 //       <Signup/>
 //       <Header />
 //       <Section/>
@@ -141,8 +121,6 @@
 //       <Malumot/>
 //       <Steps/>
 //       <Footer/>
-
-
 
 //       {/* <Router>
 //       <Routes>
@@ -156,99 +134,174 @@
 
 // export default App;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import { Routes, Route } from 'react-router-dom';
-import Header from './components4/Header';
-import Home from './pages/Home';
-import Signup from './pages/Signup';
-import Signin from './pages/Signin';
-import Add from './pages/Add';
-import Edit from './pages/Edit';
-import ProtectedRoute from './components4/ProtectedRoute';
-
-function App() {
+// import React from 'react'
+// import Section from './TelefonSayt/Section'
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Section/>
+//     </div>
+//   )
+// }
+
+// export default App
+
+// import React, { Fragment } from 'react'
+// import Brands from './TelefonSayt/Brands'
+// import './index.css';
+
+// const App = () => {
+//   return (
+//     <Fragment>
+//       <Brands/>
+//     </Fragment>
+//   )
+// }
+
+// export default App
+
+// import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+// import { useState } from "react";
+// import { Login } from "./pages/Login";
+// import { Profile } from "./pages/Profile";
+// import { Register } from "./pages/Register";
+
+// function App() {
+//   const [user, setUser] = useState(null);
+
+//   return (
+//     <Router>
+//       <Routes>
+//         <Route path="/" element={<Login setUser={setUser} />} />
+//         <Route path="/register" element={<Register setUser={setUser} />} />
+//         <Route
+//           path="/profile"
+//           element={user ? <Profile user={user} /> : <Navigate to="/" />}
+//         />
+//       </Routes>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+
+
+// import React, { Fragment } from "react";
+// import Login from "./pages/Login";
+// import Profile from "./pages/Profile";
+// import Register from "./pages/Register";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   Navigate,
+// } from "react-router-dom";
+// import Login from "./pages/Login";
+// import Register from "./pages/Register";
+// import Profile from "./pages/Profile";
+
+// const App = () => {
+//   // const [user, setUser] = useState(null);
+//   return (
+//     // <Router>
+//     //   <Routes>
+//     //     <Route path="/" element={<Login setUser={setUser}/>}/>
+//     //     <Route path="/register" element={<Register setUser={setUser}/>}/>
+//     //     <Route path="/profile" element={user ? <Profile user={user}/> : <Navigate to="/"/>}></Route>
+//     //   </Routes>
+//     // </Router>
+//     <Fragment>
+//       <Login />
+//       <Profile />
+//       <Register />
+//     </Fragment>
+//   );
+// };
+
+
+
+// export default App;
+
+
+
+// import { Routes, Route } from 'react-router-dom';
+// import Header from './components4/Header';
+// import Home from './pages/Home';
+// import Signup from './pages/Signup';
+// import Signin from './pages/Signin';
+// import Add from './pages/Add';
+// import Edit from './pages/Edit';
+// import ProtectedRoute from './components4/ProtectedRoute';
+
+// function App() {
+//   return (
+//     <>
+//       <Header />
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route path="/signup" element={<Signup />} />
+//         <Route path="/signin" element={<Signin />} />
+//         <Route path="/add" element={<ProtectedRoute><Add /></ProtectedRoute>} />
+//         <Route path="/edit" element={<ProtectedRoute><Edit /></ProtectedRoute>} />
+//       </Routes>
+//     </>
+//   );
+// }
+
+// export default App;
+
+
+
+
+// import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+// import { useState, useEffect } from "react";
+// import Login from "./pages/Login";
+// import Register from "./pages/Register";
+// import Profile from "./pages/Profile";
+
+// function App() {
+//   const [user, setUser] = useState(null);
+
+//   useEffect(() => {
+//     const storedUser = localStorage.getItem("user");
+//     if (storedUser) {
+//       setUser(JSON.parse(storedUser));
+//     }
+//   }, []);
+
+//   return (
+   
+//       <Routes>
+//         <Route path="/" element={<Login setUser={setUser} />} />
+//         <Route path="/register" element={<Register setUser={setUser} />} />
+//         <Route
+//           path="/profile"
+//           element={user ? <Profile user={user} /> : <Navigate to="/" />}
+//         />
+//       </Routes>
+    
+//   );
+// }
+
+// export default App;
+
+
+
+import { Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
+
+const App = () => {
   return (
-    <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/add" element={<ProtectedRoute><Add /></ProtectedRoute>} />
-        <Route path="/edit" element={<ProtectedRoute><Edit /></ProtectedRoute>} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/profile" element={<Profile />} />
+    </Routes>
   );
-}
+};
 
 export default App;
