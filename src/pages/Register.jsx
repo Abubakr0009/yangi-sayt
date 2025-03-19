@@ -101,42 +101,108 @@
 
 
 
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import { notification } from "antd";
+// // await axios.post(`${API_URL}/register`, { email, password });
+
+
+// const API_URL = "https://api.ashyo.fullstackdev.uz/api";
+
+// const Register = () => {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const navigate = useNavigate();
+
+//   const handleRegister = async () => {
+//     try {
+//       await axios.post(`${API_URL}/register`, { email, password });
+//       notification.success({ message: "Muvaffaqiyatli ro‘yxatdan o‘tildi" });
+//       navigate("/login");
+//     } catch (error) {
+//       notification.error({ 
+//         message: "Xatolik", 
+//         description: error.response?.data?.message || "Ro‘yxatdan o‘tishda xatolik yuz berdi" 
+//       });
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <h2>Ro‘yxatdan o‘tish</h2>
+//       <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+//       <input type="password" placeholder="Parol" value={password} onChange={(e) => setPassword(e.target.value)} />
+//       <button onClick={handleRegister}>Ro‘yxatdan o‘tish</button>
+//       <p>Allaqachon hisobingiz bormi? <a href="/login">Kirish</a></p>
+//     </div>
+//   );
+// };
+
+// export default Register;
+
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { notification } from "antd";
-// await axios.post(`${API_URL}/register`, { email, password });
-
-
-const API_URL = "https://api.ashyo.fullstackdev.uz/api";
 
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  let [fullname, setFullname] = useState("");
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
+  let navigate = useNavigate();
+ 
 
-  const handleRegister = async () => {
+  async function handleSubmit(e) {
+    e.preventDefault();
+
     try {
-      await axios.post(`${API_URL}/register`, { email, password });
-      notification.success({ message: "Muvaffaqiyatli ro‘yxatdan o‘tildi" });
-      navigate("/login");
+      let response = await axios.post(
+        `https://api.ashyo.fullstackdev.uz/auth/register`,
+        { fullname, email, password }
+      );
+
+      localStorage.setItem("accessToken", response.data.accessToken);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      navigate("/profile");
+
+      notification.success({
+        message: "Ro‘yxatdan o‘tish muvaffaqiyatli",
+        description: "Siz tizimga muvaffaqiyatli kirdingiz!",
+      });
     } catch (error) {
-      notification.error({ 
-        message: "Xatolik", 
-        description: error.response?.data?.message || "Ro‘yxatdan o‘tishda xatolik yuz berdi" 
+      notification.error({
+        message: "Xatolik yuz berdi",
+        description: error.response?.data?.message || "Qaytadan urinib ko‘ring!",
       });
     }
-  };
+  }
 
   return (
     <div>
-      <h2>Ro‘yxatdan o‘tish</h2>
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Parol" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleRegister}>Ro‘yxatdan o‘tish</button>
-      <p>Allaqachon hisobingiz bormi? <a href="/login">Kirish</a></p>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <span>Full name</span>
+          <input type="text" onChange={(e) => setFullname(e.target.value)} />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" onChange={(e) => setEmail(e.target.value)} />
+        </label>
+        <label>
+          <span>Password</span>
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 };
 
 export default Register;
+
+        

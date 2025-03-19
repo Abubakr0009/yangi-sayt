@@ -68,24 +68,24 @@
 
 // DARK MODE
 // import React from "react";
-// import { ThemeProvider } from "./context/ThemeContext";
-// import { LanguageProvider } from "./context/LanguageContext";
+// // import { ThemeProvider } from "./context/ThemeContext";
+// // import { LanguageProvider } from "./context/LanguageContext";
 // // import Header from "./components/Header";
 // // import Main from "./components/Main";
-// import Header_main from "./components2/Header_main";
+// // import Header_main from "./components2/Header_main";
 // // import Header from "./components2/Header_nav";
-// import Blocks from "./components2/Block";
+// // import Blocks from "./components2/Block";
 // import Header from "./components2/Header_nav";
 
 // function App() {
 //   return (
-//     <ThemeProvider>
-//       <LanguageProvider>
+//   //   <ThemeProvider>
+//   //     <LanguageProvider>
 //         <Header/>
-//         <Header_main/>
-//        <Blocks/>
-//       </LanguageProvider>
-//     </ThemeProvider>
+       
+//       //  <Blocks/>
+//     //   </LanguageProvider>
+//     // </ThemeProvider>
 //   );
 // }
 
@@ -289,19 +289,119 @@
 
 
 
-import { Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Profile from "./pages/Profile";
+// import { Routes, Route } from "react-router-dom";
+// import Login from "./pages/Login";
+// import Register from "./pages/Register";
+// import Profile from "./pages/Profile";
 
-const App = () => {
+// const App = () => {
+//   return (
+//     <Routes>
+//       <Route path="/" element={<Login />} />
+//       <Route path="/register" element={<Register />} />
+//       <Route path="/profile" element={<Profile />} />
+//     </Routes>
+//   );
+// };
+
+// export default App;
+
+
+
+// import {  Routes, Route, Navigate } from "react-router-dom";
+// import Login from "./pages/Login";
+// import Register from "./pages/Register";
+// import Profile from "./pages/Profile";
+
+// function App() {
+//   return (
+   
+//       <Routes>
+//         {/* Asosiy sahifa Login bo'ladi */}
+//         <Route path="/" element={<Navigate to="/login" />} />
+        
+//         {/* Login sahifasi */}
+//         <Route path="/login" element={<Login />} />
+
+//         {/* Ro'yxatdan o'tish sahifasi */}
+//         <Route path="/register" element={<Register />} />
+
+//         {/* Profil sahifasi */}
+//         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+
+//         {/* 404 sahifa */}
+//         <Route path="*" element={<h2>404 - Sahifa topilmadi</h2>} />
+//       </Routes>
+   
+//   );
+// }
+
+// // Foydalanuvchi tizimga kirganini tekshiruvchi komponent
+// function ProtectedRoute({ children }) {
+//   const token = localStorage.getItem("accessToken");
+//   return token ? children : <Navigate to="/login" />;
+// }
+
+// export default App;
+
+
+import React, { useEffect, useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
+import axios from "axios";
+
+const Home = () => {
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://fakestoreapi.com/products")
+      .then(response => setCards(response.data))
+      .catch(error => console.error("Error fetching data:", error));
+  }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ]
+  };
+
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/profile" element={<Profile />} />
-    </Routes>
+    <div className="container mx-auto p-4">
+      <h2 className="text-2xl font-bold mb-4">Featured Products</h2>
+      <Slider {...settings}>
+        {cards.map(card => (
+          <div key={card.id} className="p-4">
+            <div className="border rounded-lg shadow-lg p-4">
+              <img src={card.image} alt={card.title} className="h-40 mx-auto" />
+              <h3 className="text-lg font-semibold mt-2">{card.title}</h3>
+              <p className="text-gray-600">${card.price}</p>
+              <Link to={`/details/${card.id}`} className="text-blue-500 mt-2 block">View Details</Link>
+            </div>
+          </div>
+        ))}
+      </Slider>
+    </div>
   );
 };
 
-export default App;
+export default Home;

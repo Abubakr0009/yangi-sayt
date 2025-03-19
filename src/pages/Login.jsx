@@ -101,41 +101,111 @@
 // export default Login;
 
 
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import { notification } from "antd";
+
+// const API_URL = "https://api.ashyo.fullstackdev.uz/api"; // Backend API manzili
+
+
+// const Login = () => {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const navigate = useNavigate();
+
+//   const handleLogin = async () => {
+//     try {
+//       const res = await axios.post(`${API_URL}/auth/login`, { email, password });
+//       localStorage.setItem("token", res.data.token);
+//       navigate("/profile");
+//     } catch (error) {
+//       console.error("Login xatosi:", error.response?.data);
+//       notification.error({ 
+//         message: "Login xatosi", 
+//         description: error.response?.data?.message || "Noto‘g‘ri ma’lumot"
+//       });
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <h2>Login</h2>
+//       <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+//       <input type="password" placeholder="Parol" value={password} onChange={(e) => setPassword(e.target.value)} />
+//       <button onClick={handleLogin}>Kirish</button>
+//     </div>
+//   );
+// };
+
+// export default Login;
+
+
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { notification } from "antd";
 
-const API_URL = "https://api.ashyo.fullstackdev.uz/api"; // Backend API manzili
-
-
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+    
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
+  let navigate = useNavigate();
 
-  const handleLogin = async () => {
+  async function handleSubmit(e) {
+    e.preventDefault();
+
     try {
-      const res = await axios.post(`${API_URL}/auth/login`, { email, password });
-      localStorage.setItem("token", res.data.token);
+      let response = await axios.post(
+        `https://api.ashyo.fullstackdev.uz/auth/login`,
+        { email, password }
+      );
+
+      localStorage.setItem("accessToken", response.data.accessToken);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       navigate("/profile");
+
+      notification.success({
+        message: "Muvaffaqiyatli kirish",
+        description: "Siz tizimga muvaffaqiyatli kirdingiz!",
+      });
     } catch (error) {
-      console.error("Login xatosi:", error.response?.data);
-      notification.error({ 
-        message: "Login xatosi", 
-        description: error.response?.data?.message || "Noto‘g‘ri ma’lumot"
+      notification.error({
+        message: "Login xatosi",
+        description:
+          error.response?.data?.message || "Email yoki parol noto‘g‘ri",
       });
     }
-  };
+  }
 
   return (
     <div>
-      <h2>Login</h2>
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Parol" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleLogin}>Kirish</button>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <span>Email</span>
+          <input type="text" onChange={(e) => setEmail(e.target.value)} />
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" onChange={(e) => setPassword(e.target.value)} />
+        </label>
+        <button type="submit">Kirish</button>
+      </form>
     </div>
   );
 };
 
 export default Login;
+
+
+
+
+
+
+
+
+
+
+
+
+
